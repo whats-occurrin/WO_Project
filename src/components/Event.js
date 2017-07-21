@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Card, CardSection } from './fe_common';
+import { Card, CardSection } from './common';
 
 const Event = ({ event }) => {
     return (
