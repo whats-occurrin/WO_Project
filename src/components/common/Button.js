@@ -27,7 +27,7 @@ const styles = {
         backgroundColor: '#EB7F00',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '##EB7F00',
+        borderColor: '#EB7F00',
         marginLeft: 5,
         marginRight: 5
     }

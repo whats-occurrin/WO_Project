@@ -2,27 +2,35 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import Event from './Event';
 import events from './fakeData';
-import Map from './Map'
+import Map from './Map';
+import { database } from '../../firebase'
+import map from 'lodash/map';
+
 
 class EventList extends Component {
-
-    renderEvents() {
-        return events.map(event =>
-            <Event key={event.id} event={event} />
-
-        );
+    constructor(props) {
+        super(props)
     }
 
     render() {
+        const events = this.props
         return (
             <View>
                 <Map />
-                <ScrollView>
-                    {this.renderEvents()}
-                </ScrollView>
+                {
+                    map(events, (event, key) => {
+                        return <Event 
+                        key={key}
+                        {...event}
+                        
+                        
+                        />
+                    })
+                }
             </View>
         );
     }
 }
+
 
 export default EventList;
