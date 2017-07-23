@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import firebase from 'firebase';
 import { Text } from 'react-native';
 import { Card, CardSection, Input, Spinner, Button } from './common';
 
-class SignIn extends React.Component {
+class SignIn extends Component {
     state = {
         email: '',
         password: '',

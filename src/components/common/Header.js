@@ -11,7 +11,8 @@ const Header = (props) => {
             <Text style={textStyle}>{props.headerText}</Text>
                       <Button onPress={() => firebase.auth().signOut()}>
                   logout
-        </Button>
+                    </Button>
+
         </View>
     );
 };

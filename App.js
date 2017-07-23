@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, ScrollView} from 'react-native';
 import firebase from 'firebase';
 import { auth, database } from './firebase';
 
@@ -9,6 +9,7 @@ import Map from './src/components/Map';
 import SignIn from './src/components/Signin';
 import { Spinner } from './src/components/common';
 import map from 'lodash/map';
+import NewEvent from './src/components/NewEvent'
 
 class App extends Component {
       constructor(props) {
@@ -32,16 +33,35 @@ class App extends Component {
       }
 
       render() {
-            const {currentUser, events} = this.state
+            const { currentUser, events } = this.state
+                        const { textStyle, viewStyle } = styles;
             return (
 
                   <View style={{ flex: 1 }}>
-                        <Header headerText={'What\'s Occurring?'} />
 
-                        {!currentUser && <SignIn />}
+
+                        {!currentUser &&
+                              <ScrollView>
+                                    <Image
+                                          style={{ width: 400, height: 400, alignItems: 'center' }}
+                                          source={{ uri: 'http://i3.cpcache.com/product_zoom/421916676/oh_whats_occuring_bib.jpg?color=SkyBlue&height=460&width=460&padToSquare=true' }}
+
+                                    />
+                                    <Text style={textStyle}>
+                                          Search what's occurring for most upto date things to do local to you. share with friends or talk to the bot
+                                    </Text>
+
+                                    <SignIn />
+                                    <NewEvent />
+                              </ScrollView>
+
+                        }
                         {
                               currentUser &&
-                              <EventList events={events}/>
+                              <View>
+                                    <Header headerText={'What\'s Occurring?'} />
+                                    <EventList events={events} />
+                              </View>
 
 
 
@@ -51,5 +71,25 @@ class App extends Component {
             );
       }
 }
+
+const styles = {
+    viewStyle: {
+        backgroundColor: '#EB7F00',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 75,
+        paddingTop: 15,
+        shadowColor: '#000',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.2,
+        elevation: 2,
+        position: 'relative'
+    },
+    textStyle: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: '#225378'
+    }
+};
 
 export default App;
