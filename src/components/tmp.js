@@ -8,19 +8,15 @@ import map from 'lodash/map';
 class Event extends Component {
 
     render() {
-        const { events } = this.props
+        const {address, title}  = this.props
         return (
             <Card>
                 <CardSection>
+
                     <View style={styles.headerContentStyle}>
                         <Text style={styles.headerTextStyle}>
-                            {
-                            map(events, (event, key) => {
-                                return 
-                                    key={key}
-                                    event={event}
-                            })
-                        }
+                        {address} 
+                        {title}
                         </Text>
                     </View>
                 </CardSection>
@@ -64,7 +60,7 @@ class EventList extends Component {
     }
 
     render() {
-        const events = this.props
+        const events = this.props.events
         return (
             <View>
                 <Map />
@@ -85,3 +81,63 @@ class EventList extends Component {
 
 
 export default EventList;
+
+//old event list
+
+class EventList extends Component {
+
+    renderEvents() {
+        return events.map(event =>
+            <Event key={event.id} event={event} />
+
+        );
+    }
+
+    render() {
+        return (
+            <View>
+                <Map />
+                <ScrollView>
+                    {this.renderEvents()}
+                </ScrollView>
+            </View>
+        );
+    }
+}
+
+export default EventList;
+
+//old event
+
+import React from 'react';
+import { Text, View } from 'react-native';
+import { Card, CardSection } from './common';
+
+const Event = ({ event }) => {
+    return (
+        <Card>
+            <CardSection>
+                <View style={styles.headerContentStyle}>
+                    <Text style={styles.headerTextStyle}>{event.address}</Text>
+                    <Text style={styles.bodyTextStyle}>{event.title}</Text>
+                </View>
+            </CardSection>
+        </Card>
+    );
+};
+
+const styles = {
+    headerTextStyle: {
+        fontSize: 20
+    },
+    bodyTextStyle: {
+        fontSize: 16,
+        color: '#1595A3'
+    },
+    headerContentStyle: {
+        flexDirection: 'column',
+        justifyContent: 'space-around'
+    }
+};
+
+export default Event;

@@ -33,7 +33,7 @@ export default class Map extends Component {
     render() {
 
         const { region, position } = this.state
-        console.log(this.state.region)
+        console.log(region)
         return (
             <View style={styles.container}>
                 <MapView
