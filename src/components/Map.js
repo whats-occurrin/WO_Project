@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import events from './fakeData';
+import { database } from '../../firebase'
 
 export default class Map extends Component {
 

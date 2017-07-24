@@ -4,7 +4,7 @@ import Event from './Event';
 import Map from './Map';
 import { database } from '../../firebase'
 import map from 'lodash/map';
-import events from './fakeData'
+
 
 class EventList extends Component {
 

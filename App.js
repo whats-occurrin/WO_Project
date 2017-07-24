@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView} from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import firebase from 'firebase';
 import { auth, database } from './firebase';
 
@@ -34,10 +34,10 @@ class App extends Component {
 
       render() {
             const { currentUser, events } = this.state
-                        const { textStyle, viewStyle } = styles;
+            const { textStyle, viewStyle } = styles;
             return (
 
-                  <View style={{flex: 1}}>
+                  <View style={{ flex: 1 }}>
 
 
                         {!currentUser &&
@@ -51,8 +51,11 @@ class App extends Component {
                                           Search what's occurring for most upto date things to do local to you. share with friends or talk to the bot
                                     </Text>
 
+
                                     <SignIn />
+
                                     <NewEvent />
+
                               </ScrollView>
 
                         }
@@ -60,8 +63,9 @@ class App extends Component {
                               currentUser &&
                               <View>
                                     <Header headerText={'What\'s Occurring?'} />
-                                    <Map />
+                                    <Map events={events} />
                                     <EventList events={events} />
+
                               </View>
 
 
@@ -74,23 +78,23 @@ class App extends Component {
 }
 
 const styles = {
-    viewStyle: {
-        backgroundColor: '#EB7F00',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 75,
-        paddingTop: 15,
-        shadowColor: '#000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.2,
-        elevation: 2,
-        position: 'relative'
-    },
-    textStyle: {
-        fontSize: 28,
-        fontWeight: 'bold',
-        color: '#225378'
-    }
+      viewStyle: {
+            backgroundColor: '#EB7F00',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: 75,
+            paddingTop: 15,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.2,
+            elevation: 2,
+            position: 'relative'
+      },
+      textStyle: {
+            fontSize: 28,
+            fontWeight: 'bold',
+            color: '#225378'
+      }
 };
 
 export default App;
