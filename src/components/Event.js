@@ -4,26 +4,20 @@ import { Card, CardSection } from './common';
 import map from 'lodash/map';
 import Map from './Map'
 
-class Event extends Component {
 
-    render() {
-        const { address, title } = this.props
-        return (
-            <Card>
-                <CardSection>
-                    <View style={styles.headerContentStyle}>
-                        <Text style={styles.headerTextStyle}>
-                            {address}
-                            {title}
-                        </Text>
-                    </View>
-                </CardSection>
-            </Card>
-        );
-    }
+
+const Event = ({ event }) => {
+    return (
+        <Card>
+            <CardSection>
+                <View style={styles.headerContentStyle}>
+                    <Text style={styles.headerTextStyle}>{event.address}</Text>
+                    <Text style={styles.bodyTextStyle}>{event.title}</Text>
+                </View>
+            </CardSection>
+        </Card>
+    );
 };
-
-
 
 const styles = {
     headerTextStyle: {
