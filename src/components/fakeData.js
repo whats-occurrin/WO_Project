@@ -1,0 +1,365 @@
+
+export const LATITUDE = 53.501672;
+export const LONGITUDE = -2.195222;
+
+const events = [
+    {
+        id: 1,
+        type: 'Pubs & bars',
+        title: '241 Cocktails',
+        address: 'Gem Bar, 321 Milton Street',
+        coordinate: {
+            latitude: LATITUDE + 0.010,
+            longitude: LONGITUDE,
+        },
+        details: '241 cocktails 7-9pm',
+        image: '',
+        date: '31 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 2,
+        type: 'Theatre',
+        title: '10% off GoT tickets!',
+        address: 'Jacob\'s Theatre, 15 Oldham Street',
+        coordinate: {
+            latitude: LATITUDE + 0.004,
+            longitude: LONGITUDE + 0.004,
+        },
+        details: '10% off tickets for \'Game of Thrones: the musical\'',
+        image: '',
+        date: '30 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 3,
+        type: 'Restaurants',
+        title: 'Free starter',
+        address: 'Tony\'s Trattoria, 43 Newton Road',
+        coordinate: {
+            latitude: LATITUDE + 0.014,
+            longitude: LONGITUDE + 0.020,
+        },
+        details: 'Free starter with every meal',
+        image: '',
+        date: '28 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 4,
+        type: 'Pubs & bars',
+        title: '241 Cocktails',
+        address: 'Gem Bar, 321 Milton Street',
+        coordinate: {
+            latitude: LATITUDE + 0.024,
+            longitude: LONGITUDE + 0.030,
+        },
+        details: '241 cocktails 7-9pm',
+        image: '',
+        date: '31 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 5,
+        type: 'Theatre',
+        title: '10% off GoT tickets!',
+        address: 'Jacob\'s Theatre, 15 Oldham Street',
+        coordinate: {
+            latitude: LATITUDE + 0.034,
+            longitude: LONGITUDE + 0.004,
+        },
+        details: '10% off tickets for \'Game of Thrones: the musical\'',
+        image: '',
+        date: '30 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 6,
+        type: 'Restaurants',
+        title: 'Free starter',
+        address: 'Tony\'s Trattoria, 43 Newton Road',
+        coordinate: {
+            latitude: LATITUDE + 0.034,
+            longitude: LONGITUDE + 0.010,
+        },
+        details: 'Free starter with every meal',
+        image: '',
+        date: '28 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 7,
+        type: 'Pubs & bars',
+        title: '241 Cocktails',
+        address: 'Gem Bar, 321 Milton Street',
+        coordinate: {
+            latitude: LATITUDE + 0.010,
+            longitude: LONGITUDE + 0.009,
+        },
+        details: '241 cocktails 7-9pm',
+        image: '',
+        date: '31 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 8,
+        type: 'Theatre',
+        title: '10% off GoT tickets!',
+        address: 'Jacob\'s Theatre, 15 Oldham Street',
+        coordinate: {
+            latitude: LATITUDE + 0.004,
+            longitude: LONGITUDE + 0.022,
+        },
+        details: '10% off tickets for \'Game of Thrones: the musical\'',
+        image: '',
+        date: '30 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 9,
+        type: 'Restaurants',
+        title: 'Free starter',
+        address: 'Tony\'s Trattoria, 43 Newton Road',
+        coordinate: {
+            latitude: LATITUDE + 0.005,
+            longitude: LONGITUDE + 0.028,
+        },
+        details: 'Free starter with every meal',
+        image: '',
+        date: '28 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 10,
+        type: 'Pubs & bars',
+        title: '241 Cocktails',
+        address: 'Gem Bar, 321 Milton Street',
+        coordinate: {
+            latitude: LATITUDE + 0.031,
+            longitude: LONGITUDE + 0.002,
+        },
+        details: '241 cocktails 7-9pm',
+        image: '',
+        date: '31 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 11,
+        type: 'Theatre',
+        title: '10% off GoT tickets!',
+        address: 'Jacob\'s Theatre, 15 Oldham Street',
+        coordinate: {
+            latitude: LATITUDE + 0.039,
+            longitude: LONGITUDE + 0.012,
+        },
+        details: '10% off tickets for \'Game of Thrones: the musical\'',
+        image: '',
+        date: '30 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 12,
+        type: 'Restaurants',
+        title: 'Free starter',
+        address: 'Tony\'s Trattoria, 43 Newton Road',
+        coordinate: {
+            latitude: LATITUDE + 0.019,
+            longitude: LONGITUDE + 0.018,
+        },
+        details: 'Free starter with every meal',
+        image: '',
+        date: '28 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 13,
+        type: 'Pubs & bars',
+        title: '241 Cocktails',
+        address: 'Gem Bar, 321 Milton Street',
+        coordinate: {
+            latitude: LATITUDE + 0.015,
+            longitude: LONGITUDE,
+        },
+        details: '241 cocktails 7-9pm',
+        image: '',
+        date: '31 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 14,
+        type: 'Theatre',
+        title: '10% off GoT tickets!',
+        address: 'Jacob\'s Theatre, 15 Oldham Street',
+        coordinate: {
+            latitude: LATITUDE + 0.016,
+            longitude: LONGITUDE + 0.009,
+        },
+        details: '10% off tickets for \'Game of Thrones: the musical\'',
+        image: '',
+        date: '30 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 15,
+        type: 'Restaurants',
+        title: 'Free starter',
+        address: 'Tony\'s Trattoria, 43 Newton Road',
+        coordinate: {
+            latitude: LATITUDE + 0.026,
+            longitude: LONGITUDE + 0.022,
+        },
+        details: 'Free starter with every meal',
+        image: '',
+        date: '28 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 16,
+        type: 'Pubs & bars',
+        title: '241 Cocktails',
+        address: 'Gem Bar, 321 Milton Street',
+        coordinate: {
+            latitude: LATITUDE + 0.010,
+            longitude: LONGITUDE + 0.031,
+        },
+        details: '241 cocktails 7-9pm',
+        image: '',
+        date: '31 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 17,
+        type: 'Theatre',
+        title: '10% off GoT tickets!',
+        address: 'Jacob\'s Theatre, 15 Oldham Street',
+        coordinate: {
+            latitude: LATITUDE + 0.023,
+            longitude: LONGITUDE + 0.003,
+        },
+        details: '10% off tickets for \'Game of Thrones: the musical\'',
+        image: '',
+        date: '30 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 18,
+        type: 'Restaurants',
+        title: 'Free starter',
+        address: 'Tony\'s Trattoria, 43 Newton Road',
+        coordinate: {
+            latitude: LATITUDE + 0.033,
+            longitude: LONGITUDE + 0.011,
+        },
+        details: 'Free starter with every meal',
+        image: '',
+        date: '28 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 19,
+        type: 'Pubs & bars',
+        title: '241 Cocktails',
+        address: 'Gem Bar, 321 Milton Street',
+        coordinate: {
+            latitude: LATITUDE + 0.029,
+            longitude: LONGITUDE + 0.036,
+        },
+        details: '241 cocktails 7-9pm',
+        image: '',
+        date: '31 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 20,
+        type: 'Theatre',
+        title: '10% off GoT tickets!',
+        address: 'Jacob\'s Theatre, 15 Oldham Street',
+        coordinate: {
+            latitude: LATITUDE + 0.001,
+            longitude: LONGITUDE + 0.019,
+        },
+        details: '10% off tickets for \'Game of Thrones: the musical\'',
+        image: '',
+        date: '30 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    },
+    {
+        id: 21,
+        type: 'Restaurants',
+        title: 'Free starter',
+        address: 'Tony\'s Trattoria, 43 Newton Road',
+        coordinate: {
+            latitude: LATITUDE + 0.006,
+            longitude: LONGITUDE + 0.017,
+        },
+        details: 'Free starter with every meal',
+        image: '',
+        date: '28 Jul 2017',
+        time: '',
+        sponsored: false,
+        userId: '',
+        recurring: ''
+    }
+];
+
+module.exports = events;
