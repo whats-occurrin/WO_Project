@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { database } from '../../firebase';
 import firebase from 'firebase'
 import { Text, View } from 'react-native';
+import Geocoder from 'react-native-geocoding';
 import { Card, CardSection, Input, Spinner, Button } from './common';
+
+Geocoder.setApiKey('AIzaSyCzxkfc_AwMAk5cPzEaRLTagZBTO1l3PMw'); // use a valid API key
 
 class NewEvent extends Component {
     constructor() {
@@ -12,8 +15,8 @@ class NewEvent extends Component {
             title: '',
             address: '',
             coordinate: {
-                latitude: 0,
-                longitude: 0
+                latitude: 0.00,
+                longitude: 0.00
             },
             details: '',
             image: '',
@@ -30,23 +33,34 @@ class NewEvent extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.eventsref.push({
-            type: this.state.type,
-            title: this.state.title,
-            address: this.state.address,
-            coordinate: {
-                latitude: this.state.coordinate.latitude,
-                longitude: this.state.coordinate.longitude
+        Geocoder.getFromLocation(this.state.address).then(
+            json => {
+                this.state.coordinate = json.results[0].geometry.location;
+                let location = json.results[0].geometry.location;
+                this.state.coordinate.latitude = location.lat;
+                this.state.coordinate.longitude = location.lng;
+                console.log('location ' + location.lat + ', ' + location.lng);
+                console.log('state ' + this.state.coordinate.latitude + ', ' + this.state.coordinate.longitude);
+                this.eventsref.push({
+                    address: this.state.address,
+                    coordinate: {
+                        latitude: this.state.coordinate.latitude,
+                        longitude: this.state.coordinate.longitude
+                    },
+                    details: this.state.details,
+                    image: this.state.image,
+                    reccurring: this.state.reccurring,
+                    sponsored: this.state.sponsored,
+                    timeDate: this.state.timeDate,
+                    title: this.state.timeDate,
+                    type: this.state.type,
+                    userId: this.state.userId
+                });
             },
-            details: this.state.details,
-            image: this.state.image,
-            date: this.state.date,
-            time: this.state.time,
-            sponsored: this.state.sponsored,
-            recurring: this.state.recurring,
-            userId: this.state.userId
-
-        });
+            error => {
+                console.log(error);
+            }
+        );
     }
 
     render() {
@@ -80,18 +94,11 @@ class NewEvent extends Component {
                 <CardSection>
                     <Input
                         type=""
-                        placeholder="address"
+                        placeholder="Address"
                         value={this.state.address}
                         onChangeText={address => this.setState({ address })}
                     />
-                    <Input
-                        type=""
-                        placeholder="location"
-                        value={this.state.coordinate}
-                        onChangeText={coordinate => this.setState({ coordinate })}
-                    />
                 </CardSection>
-
                 <CardSection>
                     <Input
                         type=""
@@ -155,8 +162,6 @@ const styles = {
     headerTextStyle: {
         fontSize: 20
     }
-}
-
-
+};
 
 export default NewEvent;

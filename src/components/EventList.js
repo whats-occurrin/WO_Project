@@ -5,7 +5,6 @@ import Map from './Map';
 import { database } from '../../firebase'
 import map from 'lodash/map';
 
-
 class EventList extends Component {
 
     renderEvents() {
