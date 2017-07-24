@@ -37,7 +37,7 @@ class App extends Component {
                         const { textStyle, viewStyle } = styles;
             return (
 
-                  <View style={{ flex: 1 }}>
+                  <View style={{flex: 1}}>
 
 
                         {!currentUser &&
@@ -60,6 +60,7 @@ class App extends Component {
                               currentUser &&
                               <View>
                                     <Header headerText={'What\'s Occurring?'} />
+                                    <Map />
                                     <EventList events={events} />
                               </View>
 

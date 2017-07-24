@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import events from './fakeData';
 
@@ -74,7 +74,8 @@ export default class Map extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#EEE',
+        minHeight: 300,
+        backgroundColor: '#EEE'
     },
     map: {
         flex: 1,
