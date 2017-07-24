@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import {Button} from './Button'
+import firebase from 'firebase';
 
 const Header = (props) => {
     const { textStyle, viewStyle } = styles;
@@ -7,6 +9,10 @@ const Header = (props) => {
     return (
         <View style={viewStyle}>
             <Text style={textStyle}>{props.headerText}</Text>
+                      <Button onPress={() => firebase.auth().signOut()}>
+                  logout
+                    </Button>
+
         </View>
     );
 };
@@ -16,7 +22,7 @@ const styles = {
         backgroundColor: '#EB7F00',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 60,
+        height: 75,
         paddingTop: 15,
         shadowColor: '#000',
         shadowOffset: {width: 0, height: 2},
