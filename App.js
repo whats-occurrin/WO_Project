@@ -13,22 +13,22 @@ import NewEvent from './src/components/NewEvent'
 
 class App extends Component {
       constructor(props) {
-            super(props)
+            super(props);
             this.state = {
                   currentUser: null,
                   events: null
             };
-            this.eventsref = database.ref('/events')
+            this.eventsref = database.ref('/events');
       }
 
 
       componentDidMount() {
             auth.onAuthStateChanged((currentUser) => {
-                  this.setState({ currentUser })
+                  this.setState({ currentUser });
 
                   this.eventsref.on('value', (snapshot) => {
                         this.setState({ events: snapshot.val() })
-                  })
+                  });
             });
       }
 
