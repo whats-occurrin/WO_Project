@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { database } from '../../firebase';
-import firebase from 'firebase';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import Geocoder from 'react-native-geocoding';
-import { Card, CardSection, Input, Spinner, Button } from './common';
-import { Container, Header, Title, Icon, Content } from 'native-base';
+import { Card, CardSection, Input, Button } from './common';
 
 import AppHeader from './common/AppHeader';
 
@@ -42,8 +40,7 @@ class NewEvent extends Component {
                 let location = json.results[0].geometry.location;
                 this.state.coordinate.latitude = location.lat;
                 this.state.coordinate.longitude = location.lng;
-                console.log('location ' + location.lat + ', ' + location.lng);
-                console.log('state ' + this.state.coordinate.latitude + ', ' + this.state.coordinate.longitude);
+                
                 this.eventsref.push({
                     address: this.state.address,
                     coordinate: {
@@ -61,7 +58,7 @@ class NewEvent extends Component {
                 });
             },
             error => {
-                console.log(error);
+                console.log (error);
             }
         );
     }

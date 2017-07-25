@@ -7,7 +7,7 @@ import Map from './src/components/Map';
 import SignIn from './src/components/Signin';
 import NewEvent from './src/components/NewEvent';
 import RouterComponent from './src/RouterComponent';
-import AppHeader from './src/components/AppHeader';
+import AppHeader from './src/components/common/AppHeader';
 
 class App extends Component {
     constructor(props) {

@@ -1,10 +1,7 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-import { Button } from './Button';
-import firebase from 'firebase';
-import { Actions } from 'react-native-router-flux';
-
-import { Container, Header, Title, Icon, Content } from 'native-base';
+import React, {Component} from 'react';
+import { Text } from 'react-native';
+import CardSection from './common/CardSection';
+import Card from './common/Card';
 
 class EventCard extends Component {
     render() {

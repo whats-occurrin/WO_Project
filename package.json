@@ -1,11 +1,12 @@
 {
-  "name": "WO_Project",
+  "name": "wo-project",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "eslint": "^4.3.0",
     "eslint-plugin-jsx": "0.0.2",
     "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-react-native": "^3.0.1",
     "jest-expo": "~18.0.0",
     "native-base": "2.2.0",
     "react-native-modal-dropdown": "^0.4.4",
