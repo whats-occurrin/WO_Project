@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import { auth } from './firebase';
 
 import SignIn from './src/components/Signin';
+
 import RouterComponent from './src/RouterComponent';
 import Event from './src/components/Event'
 
