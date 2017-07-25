@@ -1,40 +1,31 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import Event from './Event';
-import Map from './Map';
-import { database } from '../../firebase';
 import map from 'lodash/map';
-import AppHeader from './common/AppHeader';
+import PropTypes from 'prop-types';
+
 
 class EventList extends Component {
-    constructor(props) {
-        super(props)
+
+    renderEvents() {
+        return map(this.props.events, event =>
+            <Event key={event.id} event={event} />
+        );
     }
 
     render() {
-        const events = this.props.events
-        console.log(this.props.events)
         return (
             <View>
-                <Map />
-                <AppHeader />
-
-                <Text>Hello!</Text>
-                <ScrollView>    
-                {
-                    map(events, (event, key) => {
-                        return <Event 
-                        key={key}
-                        {...event}
-                        
-                        
-                        />
-                    })
-                }
+                <ScrollView>
+                    {this.renderEvents()}
                 </ScrollView>
             </View>
         );
     }
 }
+
+EventList.propTypes = {
+    events: PropTypes.element.isRequired
+};
 
 export default EventList;

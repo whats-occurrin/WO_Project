@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 import { Card, CardSection } from './common';
-import map from 'lodash/map';
-// import Map from './Map'
-
-
+import PropTypes from 'prop-types';
 
 const Event = ({ event }) => {
     return (
@@ -31,6 +28,10 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'space-around'
     }
+};
+
+Event.propTypes = {
+    event: PropTypes.element.isRequired
 };
 
 export default Event;
