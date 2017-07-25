@@ -30,7 +30,7 @@ class Settings extends Component {
                 </Button>
             
                 <Button onPress={() => Actions.newEvent()}>
-                <Text>Add an event</Text>
+                    <Text>Add an event</Text>
                 </Button>
 
 

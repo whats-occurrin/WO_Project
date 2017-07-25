@@ -8,12 +8,12 @@ import AppHeader from './common/AppHeader';
 
 class EventList extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     render() {
-        const events = this.props.events
-        console.log(this.props.events)
+        const events = this.props.events;
+        console.log(this.props.events);
         return (
             <View>
                 <Map />
@@ -21,16 +21,16 @@ class EventList extends Component {
 
                 <Text>Hello!</Text>
                 <ScrollView>    
-                {
-                    map(events, (event, key) => {
-                        return <Event 
-                        key={key}
-                        {...event}
+                    {
+                        map(events, (event, key) => {
+                            return <Event 
+                                key={key}
+                                {...event}
                         
                         
-                        />
-                    })
-                }
+                            />;
+                        })
+                    }
                 </ScrollView>
             </View>
         );
