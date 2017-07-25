@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Card, CardSection } from './common';
 import map from 'lodash/map';
-import Map from './Map'
+// import Map from './Map'
 
 
 
@@ -11,8 +11,8 @@ const Event = ({ event }) => {
         <Card>
             <CardSection>
                 <View style={styles.headerContentStyle}>
-                    <Text style={styles.headerTextStyle}>{event.address}</Text>
-                    <Text style={styles.bodyTextStyle}>{event.title}</Text>
+                    <Text style={styles.headerTextStyle}>{event.title}</Text>
+                    <Text style={styles.bodyTextStyle}>{event.address}</Text>
                 </View>
             </CardSection>
         </Card>

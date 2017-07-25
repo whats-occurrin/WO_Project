@@ -52,7 +52,7 @@ class NewEvent extends Component {
                     reccurring: this.state.reccurring,
                     sponsored: this.state.sponsored,
                     timeDate: this.state.timeDate,
-                    title: this.state.timeDate,
+                    title: this.state.title,
                     type: this.state.type,
                     userId: this.state.userId
                 });

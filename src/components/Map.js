@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
-import events from './fakeData';
-import { database } from '../../firebase'
+import map from 'lodash/map';
 
 export default class Map extends Component {
 
@@ -10,6 +9,7 @@ export default class Map extends Component {
 
     componentDidMount() {
         console.log('Getting LOCATION')
+
         navigator.geolocation.getCurrentPosition(
             ({ coords }) => {
                 const { latitude, longitude } = coords
@@ -34,22 +34,21 @@ export default class Map extends Component {
     render() {
 
         const { region, position } = this.state
-        console.log(region)
         return (
             <View style={styles.container}>
                 <MapView
                     style={styles.map}
                     region={region}
                 >
-                    {events.map(marker => (
-                        <MapView.Marker
-                            key={marker.id}
-                            coordinate={marker.coordinate}
-                            title={marker.title}
-                            description={marker.details}
-                        />
-                    ))}
 
+                    {map(this.props.events, event =>
+                        <MapView.Marker
+                            key={event.id}
+                            coordinate={event.coordinate}
+                            title={event.title}
+                            description={event.details}
+                        />
+                    )}
                     {position && (
                         <MapView.Circle
                             center={position}
