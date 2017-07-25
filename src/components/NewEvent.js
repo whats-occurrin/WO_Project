@@ -4,6 +4,9 @@ import firebase from 'firebase'
 import { Text, View } from 'react-native';
 import Geocoder from 'react-native-geocoding';
 import { Card, CardSection, Input, Spinner, Button } from './common';
+import { Container, Header, Title, Icon, Content } from 'native-base';
+
+import AppHeader from './common/AppHeader';
 
 Geocoder.setApiKey('AIzaSyCzxkfc_AwMAk5cPzEaRLTagZBTO1l3PMw'); // use a valid API key
 
@@ -67,6 +70,7 @@ class NewEvent extends Component {
         const { type, title, address, coordinate, details, image, date, time, sponsored, recurring, userId } = this.state;
         return (
             <Card>
+
                 <Text style={styles.headerTextStyle}>Add an event</Text>
                 <CardSection>
                     <Button
@@ -90,7 +94,6 @@ class NewEvent extends Component {
                         onChangeText={title => this.setState({ title })}
                     />
                 </CardSection>
-
                 <CardSection>
                     <Input
                         type=""
@@ -153,6 +156,16 @@ class NewEvent extends Component {
                         onChangeText={userId => this.setState({ userId })}
                     />
                 </CardSection>
+                <CardSection>
+                    <Button
+                        onPress={this.handleSubmit}
+                        disabled={!address}
+                    >
+                        <Text>Create event</Text>
+                    </Button>
+                    <AppHeader />
+                </CardSection>
+
             </Card>
         );
     }

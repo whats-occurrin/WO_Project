@@ -4,21 +4,33 @@ import Event from './Event';
 import Map from './Map';
 import { database } from '../../firebase';
 import map from 'lodash/map';
+import AppHeader from './common/AppHeader';
 
 class EventList extends Component {
-
-    renderEvents() {
-// console.log('++++++', this.props.events)
-        return map(this.props.events, event =>
-            <Event key={event.id} event={event} />
-        );
+    constructor(props) {
+        super(props)
     }
 
     render() {
+        const events = this.props.events
+        console.log(this.props.events)
         return (
             <View>
-                <ScrollView>
-                    {this.renderEvents()}
+                <Map />
+                <AppHeader />
+
+                <Text>Hello!</Text>
+                <ScrollView>    
+                {
+                    map(events, (event, key) => {
+                        return <Event 
+                        key={key}
+                        {...event}
+                        
+                        
+                        />
+                    })
+                }
                 </ScrollView>
             </View>
         );

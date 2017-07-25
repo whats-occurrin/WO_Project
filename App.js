@@ -3,13 +3,15 @@ import { View, Text, Image, ScrollView } from 'react-native';
 import firebase from 'firebase';
 import { auth, database } from './firebase';
 
-import Header from './src/components/common/Header';
+import AppHeader from './src/components/common/AppHeader';
 import EventList from './src/components/EventList';
 import Map from './src/components/Map';
 import SignIn from './src/components/Signin';
 import { Spinner } from './src/components/common';
 import map from 'lodash/map';
-import NewEvent from './src/components/NewEvent'
+import NewEvent from './src/components/NewEvent';
+import Settings from './src/components/Settings';
+import RouterComponent from './src/RouterComponent';
 
 class App extends Component {
       constructor(props) {
@@ -42,11 +44,11 @@ class App extends Component {
 
                         {!currentUser &&
                               <ScrollView>
-                                    <Image
+                                    {/* <Image
                                           style={{ width: 400, height: 400, alignItems: 'center' }}
                                           source={{ uri: 'http://i3.cpcache.com/product_zoom/421916676/oh_whats_occuring_bib.jpg?color=SkyBlue&height=460&width=460&padToSquare=true' }}
 
-                                    />
+                                    /> */}
                                     <Text style={textStyle}>
                                           Search what's occurring for most upto date things to do local to you. share with friends or talk to the bot
                                     </Text>
@@ -66,6 +68,7 @@ class App extends Component {
                                     <Map events={events} />
                                     <EventList events={events} />
 
+                                    <RouterComponent />
                               </View>
 
 
