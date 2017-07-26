@@ -2,17 +2,19 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { Card, CardSection } from './common';
 import PropTypes from 'prop-types';
+import { ListItem } from 'react-native-elements';
+import { Actions } from 'react-native-router-flux';
 
 const Event = ({ event }) => {
+    console.log(event);
     return (
-        <Card>
-            <CardSection>
-                <View style={styles.headerContentStyle}>
-                    <Text style={styles.headerTextStyle}>{event.title}</Text>
-                    <Text style={styles.bodyTextStyle}>{event.address}</Text>
-                </View>
-            </CardSection>
-        </Card>
+
+        <ListItem 
+            style={{ minHeight: 30 }} 
+            onPress={() => Actions.displayCard({event})} 
+            title={event.address} 
+        />
+
     );
 };
 
@@ -26,12 +28,13 @@ const styles = {
     },
     headerContentStyle: {
         flexDirection: 'column',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        height: 50
     }
 };
 
 Event.propTypes = {
-    event: PropTypes.element.isRequired
+    event: PropTypes.object.isRequired
 };
 
 export default Event;
