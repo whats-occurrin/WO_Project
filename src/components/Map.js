@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import map from 'lodash/map';
+import reduce from 'lodash/reduce';
+import calcGeoDistance from './helpers/calcGeoDistance';
 
 export default class Map extends Component {
 
-    state = {}
+    constructor(props) {
+        super(props)
+        this.state = {};
+        this.filterEventsByLocation = this.filterEventsByLocation.bind(this);
+    }
 
     componentDidMount() {
         console.log('Getting LOCATION')
-
         navigator.geolocation.getCurrentPosition(
             ({ coords }) => {
                 const { latitude, longitude } = coords
@@ -17,23 +22,25 @@ export default class Map extends Component {
                 this.setState({
                     position: {
                         latitude,
-                        longitude,
+                        longitude
                     },
                     region: {
                         latitude,
                         longitude,
                         latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
+                        longitudeDelta: 0.0421
                     }
-                })
+                });
             },
             (error) => alert(JSON.stringify(error)),
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         )
     }
-    render() {
 
-        const { region, position } = this.state
+    render() {
+        const { region, position, events } = this.state
+        const eventsFound = this.filterEventsByLocation(this.props.events);
+        
         return (
             <View style={styles.container}>
                 <MapView
@@ -41,7 +48,7 @@ export default class Map extends Component {
                     region={region}
                 >
 
-                    {map(this.props.events, event =>
+                    {map(eventsFound, event =>
                         <MapView.Marker
                             key={event.id}
                             coordinate={event.coordinate}
@@ -68,6 +75,17 @@ export default class Map extends Component {
                 </MapView>
             </View>
         )
+    }
+
+    filterEventsByLocation(events) {
+        const { position } = this.state;
+
+        return reduce(events, (acc, event, key) => {
+            if (calcGeoDistance(position, event.coordinate) < 1.5) {
+                acc[key] = Object.assign({}, event);
+            }
+            return acc;
+        }, {});
     }
 }
 
