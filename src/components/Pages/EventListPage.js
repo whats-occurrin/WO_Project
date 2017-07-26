@@ -28,7 +28,7 @@ class EventListPage extends Component {
         return (
 
             <View style={{ flex: 1 }}>
-                <AppHeader style={{flex: 1, height: 60}}/>
+                <AppHeader style={{flex: 1, height: 60}}headerText={'WO?'}/>
                 <View style={{ flex: 1, marginTop: 60}}>
                     <Map events={events} />  
                     <EventList events={events} /> 

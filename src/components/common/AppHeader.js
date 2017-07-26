@@ -1,12 +1,13 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Button } from './Button';
+// import { Button } from './Button';
 import NewEvent from '../NewEvent';
 import firebase from 'firebase';
 import Settings from '../Settings';
 import { Actions } from 'react-native-router-flux';
+import { Button, Header } from 'react-native-elements';
 
-import { Container, Header, Title, Icon, Content } from 'native-base';
+import { Container, Title, Icon, Content } from 'native-base';
 import ModalDropdown from 'react-native-modal-dropdown';
 
 const AppHeader = (props) => {
@@ -17,12 +18,11 @@ const AppHeader = (props) => {
         <View >
             <Header>
                 <Text style={textStyle}>{props.headerText}</Text>
-                <Button onPress={() => Actions.settings()}>
-                    <Icon name="ios-settings" />
+                <Button icon={{name: 'settings'}} onPress={() => Actions.settings()}>
+                    
                 </Button>
                     <Button onPress={() => firebase.auth().signOut()}>
                     Logout
-
                 </Button>
             </Header>
 
@@ -31,6 +31,9 @@ const AppHeader = (props) => {
 };
 
 const styles = {
+    buttonStyle: {
+
+    },
     viewStyle: {
         backgroundColor: '#EB7F00',
         justifyContent: 'center',
