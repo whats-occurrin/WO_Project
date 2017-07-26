@@ -21,7 +21,7 @@ class Settings extends Component {
 
                 <Button ><Text>Theatre</Text></Button><Button ><Text>Sports</Text></Button>
 
-                <Button onPress={() => Actions.eventList()}>
+                <Button onPress={() => Actions.eventListPage()}>
                     <Text>Update my preferences</Text>
                 </Button>
             
