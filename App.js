@@ -102,6 +102,7 @@ const styles = {
         resizeMode: 'contain'
     },
     viewStyle: {
+        height: Dimensions.get('screen').height
         // backgroundColor: '#EB7F00',
         // justifyContent: 'center',
         // alignItems: 'center',
@@ -112,7 +113,7 @@ const styles = {
         // shadowOpacity: 0.2,
         // elevation: 2,
         // position: 'relative',
-        flex: 1
+        // flex: 1
     },
     textStyle: {
         fontSize: 26,
