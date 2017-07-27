@@ -37,7 +37,7 @@ export default class Map extends Component {
 
     render() {
         const { region, position, events } = this.state
-        // const eventsFound = this.filterEventsByLocation(this.props.events);
+        const eventsFound = this.filterEventsByLocation(this.props.events);
         
         return (
             <View style={styles.container}>
@@ -46,7 +46,7 @@ export default class Map extends Component {
                     region={region}
                 >
 
-                    {map(this.props.events, event =>
+                    {map(eventsFound, event =>
                         <MapView.Marker
                             key={event.id}
                             coordinate={event.coordinate}
