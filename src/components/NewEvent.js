@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { database } from '../../firebase';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View, Dimensions, TextInput, ScrollView } from 'react-native';
 import Geocoder from 'react-native-geocoding';
 import { Card, CardSection, Input, Button } from './common';
+
+import { FormLabel, FormInput } from 'react-native-elements'
 
 import AppHeader from './common/AppHeader';
 
 Geocoder.setApiKey('AIzaSyCzxkfc_AwMAk5cPzEaRLTagZBTO1l3PMw'); // use a valid API key
+
+const height = Dimensions.get('screen').height;
+const width = Dimensions.get('screen').width;
 
 class NewEvent extends Component {
     constructor() {
@@ -23,7 +28,7 @@ class NewEvent extends Component {
             image: '',
             date: '',
             time: '',
-            sponsored: false,
+            sponsored: '',
             recurring: '',
             userId: ''
         };
@@ -40,7 +45,7 @@ class NewEvent extends Component {
                 let location = json.results[0].geometry.location;
                 this.state.coordinate.latitude = location.lat;
                 this.state.coordinate.longitude = location.lng;
-                
+
                 this.eventsref.push({
                     address: this.state.address,
                     coordinate: {
@@ -49,16 +54,17 @@ class NewEvent extends Component {
                     },
                     details: this.state.details,
                     image: this.state.image,
-                    reccurring: this.state.reccurring,
+                    recurring: this.state.recurring,
                     sponsored: this.state.sponsored,
-                    timeDate: this.state.timeDate,
+                    date: this.state.date,
+                    time: this.state.time,
                     title: this.state.title,
                     type: this.state.type,
                     userId: this.state.userId
                 });
             },
             error => {
-                console.log (error);
+                console.log(error);
             }
         );
     }
@@ -67,113 +73,68 @@ class NewEvent extends Component {
         const { type, title, address, coordinate, details, image, date, time, sponsored, recurring, userId } = this.state;
         return (
 
-            <Card>
-                <AppHeader headerText={'What\'s Occurring?'}/>
+            <View style={styles.container}>
+                <AppHeader headerText={'What\'s Occurring?'} />
+                <View style={styles.formContainer}>
+                    <ScrollView>
 
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>Type</FormLabel>
+                        <FormInput onChangeText={type => this.setState({ type })} />
 
-                <Text style={styles.headerTextStyle}>Add an event</Text>
-                <CardSection>
-                    <Button
-                        onPress={this.handleSubmit}
-                        disabled={!address}
-                    >
-                        Submit
-                    </Button>
-                </CardSection>
-                <CardSection style={styles.container}>
-                    <Input
-                        type=""
-                        placeholder="Type"
-                        value={this.state.type}
-                        onChangeText={type => this.setState({ type })}
-                    />
-                    <Input
-                        type=""
-                        placeholder="Title"
-                        value={this.state.title}
-                        onChangeText={title => this.setState({ title })}
-                    />
-                </CardSection>
-                <CardSection style={styles.container}>
-                    <Input
-                        type=""
-                        placeholder="Address"
-                        value={this.state.address}
-                        onChangeText={address => this.setState({ address })}
-                    />
-                </CardSection>
-                <CardSection style={styles.container}>
-                    <Input
-                        type=""
-                        placeholder="Details"
-                        value={this.state.details}
-                        onChangeText={details => this.setState({ details })}
-                    />
-                    <Input
-                        type=""
-                        placeholder="Image"
-                        value={this.state.image}
-                        onChangeText={image => this.setState({ image })}
-                    />
-                </CardSection>
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>Title</FormLabel>
+                        <FormInput onChangeText={title => this.setState({ title })} />
 
-                <CardSection style={styles.container}>
-                    <Input
-                        type=""
-                        placeholder="Date"
-                        value={this.state.date}
-                        onChangeText={date => this.setState({ date })}
-                    />
-                    <Input
-                        type=""
-                        placeholder="Time"
-                        value={this.state.time}
-                        onChangeText={time => this.setState({ time })}
-                    />
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>Address</FormLabel>
+                        <FormInput onChangeText={address => this.setState({ address })} />
 
-                </CardSection>
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>Details</FormLabel>
+                        <FormInput onChangeText={details => this.setState({ details })} />
 
-                <CardSection style={styles.container}>
-                    <Input
-                        type=""
-                        placeholder="Sponsored"
-                        value={this.state.sponsored}
-                        onChangeText={sponsored => this.setState({ sponsored })}
-                    />
-                    <Input
-                        type=""
-                        placeholder="Reccurring"
-                        value={this.state.recurring}
-                        onChangeText={recurring => this.setState({ recurring })}
-                    />
-                </CardSection>
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>image</FormLabel>
+                        <FormInput onChangeText={image => this.setState({ image })} />
 
-                <CardSection style={styles.container}>
-                    <Input
-                        type=""
-                        placeholder="User"
-                        value={this.state.userId}
-                        onChangeText={userId => this.setState({ userId })}
-                    />
-                </CardSection>
-                <CardSection style={styles.container}>
-                    <Button
-                        style={styles.createEventButton}
-                        onPress={this.handleSubmit}
-                        disabled={!address}
-                    >
-                        <Text>Create event</Text>
-                    </Button>
-                </CardSection>
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>date</FormLabel>
+                        <FormInput onChangeText={date => this.setState({ date })} />
 
-            </Card>
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>time</FormLabel>
+                        <FormInput onChangeText={time => this.setState({ time })} />
+
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>sponsored</FormLabel>
+                        <FormInput onChangeText={sponsored => this.setState({ sponsored })} />
+
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>recurring</FormLabel>
+                        <FormInput onChangeText={recurring => this.setState({ recurring })} />
+
+                        <FormLabel style={{ backgroundColor: 'transparent' }}>userId</FormLabel>
+                        <FormInput onChangeText={userId => this.setState({ userId })} />
+
+                        <Button
+                            style={styles.createEventButton}
+                            onPress={this.handleSubmit}
+                            
+                        >
+                            <Text>Create event</Text>
+                        </Button>
+
+                    </ScrollView>
+                </View>
+            </View>
         );
     }
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
     container: {
-        height: 50
+        flex: 1,
+        height: height
+    },
+    formContainer: {
+        height: height * 0.9,
+        width: width
+    },
+    formInput: {
+        width: width * 0.8,
+        paddingLeft: width * 0.1
     },
     headerTextStyle: {
         fontSize: 20
