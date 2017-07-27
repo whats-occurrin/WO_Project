@@ -16,6 +16,8 @@ lat2, lon2 = Latitude and Longitude of point 2 (in decimal degrees)
 
 function calcGeoDistance(startLocation, destLocation, unit) {
 
+	if (!startLocation || !destLocation) return 0;
+
 	const radlat1 = Math.PI * startLocation.latitude / 180;
 	const radlat2 = Math.PI * destLocation.latitude / 180;
 	const theta = startLocation.longitude - destLocation.longitude;
