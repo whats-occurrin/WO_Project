@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text, StyleSheet } from 'react-native';
 import EventCard from './Pages/EventCard';
 import map from 'lodash/map';
 import PropTypes from 'prop-types';
@@ -15,7 +15,7 @@ class EventList extends Component {
         const events = this.props.events && Object.keys(this.props.events).map((key) => Object.assign({}, this.props.events[key], {id: key}));
         return (
             this.props.events
-                ? <List style={{ marginTop: 0 }}>{events.map((event, i) =>
+                ? <List style={styles.mainStyle}>{events.map((event, i) =>
                     <Event key={i} event={event} />)}
                 </List>
                 : <Text>No Events</Text>
@@ -23,8 +23,21 @@ class EventList extends Component {
     }
 }
 
-EventList.propTypes = {
-    events: PropTypes.object.isRequired
-};
+const styles = StyleSheet.create({
+    mainStyle: {
+        marginTop: 0
+    },
+    bodyTextStyle: {
+        fontSize: 16,
+        color: '#1595A3'
+    },
+    headerContentStyle: {
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        height: 50
+    }
+});
+
+
 
 export default EventList;
