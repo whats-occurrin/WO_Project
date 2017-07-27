@@ -14,11 +14,9 @@ export default class Map extends Component {
     }
 
     componentDidMount() {
-        console.log('Getting LOCATION')
         navigator.geolocation.getCurrentPosition(
             ({ coords }) => {
                 const { latitude, longitude } = coords
-                console.log('GOT the location!')
                 this.setState({
                     position: {
                         latitude,
@@ -74,19 +72,18 @@ export default class Map extends Component {
                     )}
                 </MapView>
             </View>
-        )
+        );
     }
 
-    // filterEventsByLocation(events) {
-    //     const { position } = this.state;
-
-    //     return reduce(events, (acc, event, key) => {
-    //         if (calcGeoDistance(position, event.coordinate) < 1.5) {
-    //             acc[key] = Object.assign({}, event);
-    //         }
-    //         return acc;
-    //     }, {});
-    // }
+    filterEventsByLocation(events) {
+        const { position } = this.state;
+        return reduce(events, (acc, event, key) => {
+            if (calcGeoDistance(position, event.coordinate) < 1.5) {
+                acc[key] = Object.assign({}, event);
+            }
+            return acc;
+        }, {});
+    }
 }
 
 const styles = StyleSheet.create({
@@ -99,5 +96,5 @@ const styles = StyleSheet.create({
         flex: 1,
         
     }
-})
+});
 
