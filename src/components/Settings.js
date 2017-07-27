@@ -10,7 +10,7 @@ class Settings extends Component {
     render() {
         return (
             <Container >
-                <AppHeader />
+                <AppHeader headerText={'What\'s Occurring?'}/>
                 <Text>Settings!</Text>
                 <Text>{'I\'m interested in events within a '}</Text>
                 <Slider></Slider>

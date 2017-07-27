@@ -7,7 +7,7 @@ import AppHeader from '../common/AppHeader.js';
 const EventCard = (props) => {
     return (
         <View>
-            <AppHeader style={{ flex: 1, height: 60 }} />
+            <AppHeader headerText={'What\'s Occurring?'} />
             <Text>Event Card</Text>
             <Text>{props.event.address}</Text>
 

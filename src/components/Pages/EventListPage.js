@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { database } from '../../../firebase';
 
 import EventList from '../EventList';
@@ -26,13 +26,10 @@ class EventListPage extends Component {
         const { events } = this.state;
         const { textStyle } = styles;
         return (
-
             <View style={{ flex: 1 }}>
-                <AppHeader style={{flex: 1, height: 60}}/>
-                <View style={{ flex: 1, marginTop: 60}}>
-                    <Map events={events} />  
-                    <EventList events={events} /> 
-                </View> 
+                <AppHeader headerText={'What\'s Occurring?'} />
+                <Map events={events} />
+                <EventList events={events} />
             </View>
         );
     }

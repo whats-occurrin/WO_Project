@@ -67,6 +67,7 @@ class NewEvent extends Component {
         const { type, title, address, coordinate, details, image, date, time, sponsored, recurring, userId } = this.state;
         return (
             <Card>
+                <AppHeader headerText={'What\'s Occurring?'}/>
 
                 <Text style={styles.headerTextStyle}>Add an event</Text>
                 <CardSection>
@@ -160,7 +161,6 @@ class NewEvent extends Component {
                     >
                         <Text>Create event</Text>
                     </Button>
-                    <AppHeader />
                 </CardSection>
 
             </Card>
