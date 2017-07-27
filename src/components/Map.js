@@ -10,7 +10,7 @@ export default class Map extends Component {
     constructor(props) {
         super(props)
         this.state = {};
-        this.filterEventsByLocation = this.filterEventsByLocation.bind(this);
+        // this.filterEventsByLocation = this.filterEventsByLocation.bind(this);
     }
 
     componentDidMount() {
@@ -39,7 +39,7 @@ export default class Map extends Component {
 
     render() {
         const { region, position, events } = this.state
-        const eventsFound = this.filterEventsByLocation(this.props.events);
+        // const eventsFound = this.filterEventsByLocation(this.props.events);
         
         return (
             <View style={styles.container}>
@@ -48,7 +48,7 @@ export default class Map extends Component {
                     region={region}
                 >
 
-                    {map(eventsFound, event =>
+                    {map(this.props.events, event =>
                         <MapView.Marker
                             key={event.id}
                             coordinate={event.coordinate}
@@ -77,16 +77,16 @@ export default class Map extends Component {
         )
     }
 
-    filterEventsByLocation(events) {
-        const { position } = this.state;
+    // filterEventsByLocation(events) {
+    //     const { position } = this.state;
 
-        return reduce(events, (acc, event, key) => {
-            if (calcGeoDistance(position, event.coordinate) < 1.5) {
-                acc[key] = Object.assign({}, event);
-            }
-            return acc;
-        }, {});
-    }
+    //     return reduce(events, (acc, event, key) => {
+    //         if (calcGeoDistance(position, event.coordinate) < 1.5) {
+    //             acc[key] = Object.assign({}, event);
+    //         }
+    //         return acc;
+    //     }, {});
+    // }
 }
 
 const styles = StyleSheet.create({

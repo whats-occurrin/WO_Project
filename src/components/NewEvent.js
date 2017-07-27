@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { database } from '../../firebase';
-import { Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import Geocoder from 'react-native-geocoding';
 import { Card, CardSection, Input, Button } from './common';
 
@@ -66,8 +66,10 @@ class NewEvent extends Component {
     render() {
         const { type, title, address, coordinate, details, image, date, time, sponsored, recurring, userId } = this.state;
         return (
+
             <Card>
                 <AppHeader headerText={'What\'s Occurring?'}/>
+
 
                 <Text style={styles.headerTextStyle}>Add an event</Text>
                 <CardSection>
@@ -78,7 +80,7 @@ class NewEvent extends Component {
                         Submit
                     </Button>
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.container}>
                     <Input
                         type=""
                         placeholder="Type"
@@ -92,7 +94,7 @@ class NewEvent extends Component {
                         onChangeText={title => this.setState({ title })}
                     />
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.container}>
                     <Input
                         type=""
                         placeholder="Address"
@@ -100,7 +102,7 @@ class NewEvent extends Component {
                         onChangeText={address => this.setState({ address })}
                     />
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.container}>
                     <Input
                         type=""
                         placeholder="Details"
@@ -115,7 +117,7 @@ class NewEvent extends Component {
                     />
                 </CardSection>
 
-                <CardSection>
+                <CardSection style={styles.container}>
                     <Input
                         type=""
                         placeholder="Date"
@@ -131,7 +133,7 @@ class NewEvent extends Component {
 
                 </CardSection>
 
-                <CardSection>
+                <CardSection style={styles.container}>
                     <Input
                         type=""
                         placeholder="Sponsored"
@@ -146,7 +148,7 @@ class NewEvent extends Component {
                     />
                 </CardSection>
 
-                <CardSection>
+                <CardSection style={styles.container}>
                     <Input
                         type=""
                         placeholder="User"
@@ -154,8 +156,9 @@ class NewEvent extends Component {
                         onChangeText={userId => this.setState({ userId })}
                     />
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.container}>
                     <Button
+                        style={styles.createEventButton}
                         onPress={this.handleSubmit}
                         disabled={!address}
                     >
@@ -168,10 +171,16 @@ class NewEvent extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create ({
+    container: {
+        height: 50
+    },
     headerTextStyle: {
         fontSize: 20
+    },
+    createEventButton: {
+        marginBottom: 10
     }
-};
+});
 
 export default NewEvent;
