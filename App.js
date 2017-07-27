@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { auth } from './firebase';
 
 import SignIn from './src/components/Signin';
-
 import RouterComponent from './src/RouterComponent';
-import Event from './src/components/Event'
 
 
 class App extends Component {
@@ -13,6 +11,8 @@ class App extends Component {
         super(props);
         this.state = {
             currentUser: null,
+            pageHeight: Dimensions.get('window').height,
+            pageWidth: Dimensions.get('window').width
         };
     }
 
@@ -23,18 +23,26 @@ class App extends Component {
         });
     }
 
+    getNewDimensions(event){
+        this.setState({
+            pageHeight: event.nativeEvent.layout.height,
+            pageWidth: event.nativeEvent.layout.width
+        });
+    }
+
     render() {
         const { currentUser } = this.state;
-        const { textStyle } = styles;
+        const { textStyle, viewStyle, imageStyle } = styles;
         return (
-
-            <View style={{ flex: 1 }}>
-
-
+            <View style={viewStyle} onLayout={this.state.getNewDimensions}>
                 {!currentUser &&
                     <ScrollView>
+                        <Image
+                            style={[imageStyle, { width: Dimensions.get('screen').width }]}
+                            source={require('./src/utils/WO_Logo.png')}
+                        />
                         <Text style={textStyle}>
-                            {'Search what\'s occurring for most upto date things to do local to you. share with friends or talk to the bot'}
+                            {'Find out what\'s occurring near you right now!'}
                         </Text>
                         <SignIn />
                     </ScrollView>
@@ -42,7 +50,7 @@ class App extends Component {
                 {
                     currentUser &&
                     <View>
-                        <RouterComponent/>
+                        <RouterComponent />
                     </View>
                 }
             </View>
@@ -51,20 +59,26 @@ class App extends Component {
 }
 
 const styles = {
+    imageStyle: {
+        flex: 1,
+        resizeMode: 'contain'
+    },
     viewStyle: {
-        backgroundColor: '#EB7F00',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 75,
-        paddingTop: 15,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        elevation: 2,
-        position: 'relative'
+        // backgroundColor: '#EB7F00',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // height: 75,
+        // paddingTop: 15,
+        // shadowColor: '#000',
+        // shadowOffset: { width: 0, height: 2 },
+        // shadowOpacity: 0.2,
+        // elevation: 2,
+        // position: 'relative',
+        flex: 1
     },
     textStyle: {
-        fontSize: 28,
+        fontSize: 26,
+        padding: 5,
         fontWeight: 'bold',
         color: '#225378'
     }

@@ -12,17 +12,18 @@ import ModalDropdown from 'react-native-modal-dropdown';
 
 const AppHeader = (props) => {
 
-    const { textStyle, viewStyle } = styles;
+    const { textStyle, viewStyle, buttonStyle } = styles;
 
     return (
-        <View >
+        <View style={viewStyle}>
             <Header>
                 <Text style={textStyle}>{props.headerText}</Text>
-                <Button icon={{name: 'settings'}} onPress={() => Actions.settings()}>
+                <Button style={buttonStyle} icon={{name: 'settings'}} onPress={() => Actions.settings()}>
                     
                 </Button>
-                    <Button onPress={() => firebase.auth().signOut()}>
-                    Logout
+                <Button onPress={() => firebase.auth().signOut()}>
+                    Log
+                    out
                 </Button>
             </Header>
 
@@ -32,7 +33,7 @@ const AppHeader = (props) => {
 
 const styles = {
     buttonStyle: {
-
+        backgroundColor: '#fc7401'
     },
     viewStyle: {
         backgroundColor: '#EB7F00',
@@ -47,9 +48,9 @@ const styles = {
         position: 'relative'
     },
     textStyle: {
-        fontSize: 28,
+        fontSize: 18,
         fontWeight: 'bold',
-        color: '#225378'
+        color: '#ffffff'
     }
 };
 
