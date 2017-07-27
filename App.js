@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
-import { auth } from './firebase';
+
+import { auth, database } from './firebase';
+
 import SignIn from './src/components/Signin';
 import RouterComponent from './src/RouterComponent';
+import { Actions } from 'react-native-router-flux';
 
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentUser: null,
+
             pageHeight: Dimensions.get('window').height,
-            pageWidth: Dimensions.get('window').width
+            pageWidth: Dimensions.get('window').width,
+            currentUser: {},
+            existingUser: false,
+            newUser: false,
+            user: {}
         };
     }
 
@@ -19,10 +26,42 @@ class App extends Component {
     componentDidMount() {
         auth.onAuthStateChanged((currentUser) => {
             this.setState({ currentUser });
+            let userKey;
+
+            if (!currentUser) return;
+
+            userKey = currentUser.email.replace(/\W/g, '');
+
+            let user;
+            database.ref('/users/' + userKey).once('value')
+                .then(snapshot => {
+                    let value = snapshot.val();
+                    user = value;
+                    if (value === null) {
+                        user = {
+                            email: userKey,
+                            Radius: 10.00,
+                            eventType: {
+                                restaurants: true,
+                                pubsbars: true,
+                                theatre: true,
+                                sports: true,
+                            }
+                        };
+                        return database.ref('users/' + userKey).set(user);
+                    }
+                })
+                .then(() => {
+                    this.setState({
+                        user: user
+                    });
+                    if (!this.state.currentUser.emailVerified) Actions.settings();
+                });
         });
     }
 
-    getNewDimensions(event){
+
+    getNewDimensions(event) {
         this.setState({
             pageHeight: event.nativeEvent.layout.height,
             pageWidth: event.nativeEvent.layout.width

@@ -14,11 +14,9 @@ export default class Map extends Component {
     }
 
     componentDidMount() {
-        console.log('Getting LOCATION')
         navigator.geolocation.getCurrentPosition(
             ({ coords }) => {
                 const { latitude, longitude } = coords
-                console.log('GOT the location!')
                 this.setState({
                     position: {
                         latitude,
@@ -39,7 +37,7 @@ export default class Map extends Component {
 
     render() {
         const { region, position, events } = this.state
-        // const eventsFound = this.filterEventsByLocation(this.props.events);
+        const eventsFound = this.filterEventsByLocation(this.props.events);
         
         return (
             <View style={styles.container}>
@@ -48,7 +46,7 @@ export default class Map extends Component {
                     region={region}
                 >
 
-                    {map(this.props.events, event =>
+                    {map(eventsFound, event =>
                         <MapView.Marker
                             key={event.id}
                             coordinate={event.coordinate}
@@ -74,19 +72,18 @@ export default class Map extends Component {
                     )}
                 </MapView>
             </View>
-        )
+        );
     }
 
-    // filterEventsByLocation(events) {
-    //     const { position } = this.state;
-
-    //     return reduce(events, (acc, event, key) => {
-    //         if (calcGeoDistance(position, event.coordinate) < 1.5) {
-    //             acc[key] = Object.assign({}, event);
-    //         }
-    //         return acc;
-    //     }, {});
-    // }
+    filterEventsByLocation(events) {
+        const { position } = this.state;
+        return reduce(events, (acc, event, key) => {
+            if (calcGeoDistance(position, event.coordinate) < 1.5) {
+                acc[key] = Object.assign({}, event);
+            }
+            return acc;
+        }, {});
+    }
 }
 
 const styles = StyleSheet.create({
@@ -99,5 +96,5 @@ const styles = StyleSheet.create({
         flex: 1,
         
     }
-})
+});
 
