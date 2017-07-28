@@ -1,3 +1,4 @@
+console.disableYellowBox = true;
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 
@@ -6,6 +7,7 @@ import { auth, database } from './firebase';
 import SignIn from './src/components/Signin';
 import RouterComponent from './src/RouterComponent';
 import { Actions } from 'react-native-router-flux';
+
 
 
 class App extends Component {
