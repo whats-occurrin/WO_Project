@@ -4,8 +4,6 @@ import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import { Button, Header } from 'react-native-elements';
 
-import ModalDropdown from 'react-native-modal-dropdown';
-
 const AppHeader = (props) => {
 
     const { textStyle, viewStyle, buttonStyle } = styles;
@@ -17,7 +15,6 @@ const AppHeader = (props) => {
                 centerComponent={<Text style={textStyle}>{props.headerText}</Text>}
                 leftComponent={
                     <Button
-                        
                         backgroundColor={buttonStyle.backgroundColor} icon={{ size: 20, name: 'settings' }} onPress={() => Actions.settings()}
                     />}
                 rightComponent={ 
