@@ -78,7 +78,7 @@ export default class Map extends Component {
     filterEventsByLocation(events) {
         const { position } = this.state;
         return reduce(events, (acc, event, key) => {
-            if (calcGeoDistance(position, event.coordinate) < 1.5) {
+            if (calcGeoDistance(position, event.coordinate) < 19.5) {
                 acc[key] = Object.assign({}, event);
             }
             return acc;
