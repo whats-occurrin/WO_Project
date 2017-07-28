@@ -55,7 +55,7 @@ class App extends Component {
                     this.setState({
                         user: user
                     });
-                    if (!this.state.currentUser.emailVerified) Actions.settings();
+                    if (!this.state.currentUser.emailVerified) Actions.eventListPage();
                 });
         });
     }
