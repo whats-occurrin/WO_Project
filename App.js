@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 
@@ -7,6 +8,7 @@ import SignIn from './src/components/Signin';
 import RouterComponent from './src/RouterComponent';
 import { Actions } from 'react-native-router-flux';
 
+console.disableYellowBox = true;
 
 class App extends Component {
     constructor(props) {
